@@ -13,14 +13,14 @@ public class Person
     }
 }
 
-public static class Operation
+public static class ArrayOperations
 {
     public static void SortByName(List<Person> people)
     {
         people.Sort((x, y) => string.Compare(x.Name, y.Name));
     }
 
-    public static List<Person> FilterByAge(List<Person> people, int minAge)
+    public static List<Person> FilterByAge(List<Person> people, int maxAge)
     {
         List<Person> result = new List<Person>();
         foreach (var person in people)
@@ -32,6 +32,7 @@ public static class Operation
         }
         return result;
     }
+
     public static double CalculateAverageAge(List<Person> people)
     {
         if (people.Count == 0) return 0;
@@ -82,23 +83,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Person> people = Operation.GenerateRandomPeople(10);
+        List<Person> people = ArrayOperations.GenerateRandomPeople(10);
         Console.WriteLine("Сгенерированные люди:");
         foreach (var person in people)
         {
             Console.WriteLine($"Имя: {person.Name}, Возраст: {person.Age}");
         }
 
-        Operation.SortByName(people);
+        ArrayOperations.SortByName(people);
         Console.WriteLine("\nСортировка по имени:");
         foreach (var person in people)
         {
             Console.WriteLine($"Имя: {person.Name}, Возраст: {person.Age}");
         }
 
-        Console.WriteLine($"\nСредний возраст: {Operation.CalculateAverageAge(people)}");
+        Console.WriteLine($"\nСредний возраст: {ArrayOperations.CalculateAverageAge(people)}");
 
-        List<Person> filteredPeople = Operation.FilterByAge(people, 25);
+        List<Person> filteredPeople = ArrayOperations.FilterByAge(people, 25);
         Console.WriteLine("\nЛюди младше 25 лет:");
         foreach (var person in filteredPeople)
         {
