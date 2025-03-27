@@ -11,7 +11,6 @@ namespace ConsoleApp3
             eventManager.RaiseEvent("Первое событие!");
             eventManager.RaiseEvent("Второе событие!");
 
-            // Отписка от события (если необходимо)
             eventManager.Unsubscribe(OnEventTriggered);
         }
 
