@@ -1,0 +1,36 @@
+﻿<Window x:Class="MedicalRecordsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Медицинские записи" Height="400" Width="600">
+    <Grid Background="#DFF2E6">
+ 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="#DFF2E6">
+            <Label Content="Пациенты:" Margin="10" Foreground="#2E7D32"/>
+            <ListBox Name="PatientsListBox" Margin="10" Width="150" SelectionChanged="PatientsListBox_SelectionChanged"
+                     Background="#A5D6A7" Foreground="#1B5E20"/>
+
+            <Button Content="Добавить запись" Margin="10" Click="AddRecordButton_Click" 
+                    Background="#A5D6A7" Foreground="#1B5E20" BorderBrush="#388E3C"/>
+
+        </StackPanel>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="История болезни" HorizontalAlignment="Right" Margin="0,-2,-2,-2" Width="128">
+                <DataGrid Name="MedicalHistoryDataGrid" AutoGenerateColumns="False" 
+                          Background="#E8F5E9" Foreground="#1B5E20" SelectionChanged="MedicalHistoryDataGrid_SelectionChanged">
+                  
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="*"/>
+                        <DataGridTextColumn Header="Диагноз" Binding="{Binding Diagnosis}" Width="*"/>
+                        <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
