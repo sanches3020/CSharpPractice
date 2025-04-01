@@ -1,0 +1,28 @@
+﻿<Window x:Class="MedicalRecordsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Учет медицинских записей" Height="450" Width="800"
+        KeyDown="MainWindow_KeyDown">
+    <DockPanel>
+       
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход" Click="ExitMenu_Click"/>
+            </MenuItem>
+            <MenuItem Header="Пациенты"/>
+            <MenuItem Header="Записи"/>
+            <MenuItem Header="Настройки"/>
+        </Menu>
+
+     
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="{Binding RegisterPatientCommand}" Content="Записать пациента" />
+            <Button Command="{Binding EditRecordCommand}" Content="Редактировать запись" />
+            <Button Command="{Binding DeleteRecordCommand}" Content="Удалить запись" />
+        </ToolBar>
+
+      
+        <DataGrid x:Name="PatientsDataGrid" DockPanel.Dock="Bottom"
+                  AutoGenerateColumns="True" ItemsSource="{Binding Patients}" />
+    </DockPanel>
+</Window>
