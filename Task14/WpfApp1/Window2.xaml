@@ -1,0 +1,19 @@
+﻿<Window x:Class="MedicalRecordsApp.PatientDiagnosisWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Информация о диагнозе" Height="300" Width="400">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="ФИО пациента:"/>
+            <TextBox x:Name="PatientNameTextBox" IsReadOnly="True" Margin="0,5,0,10"/>
+
+            <TextBlock Text="Возраст:"/>
+            <TextBox x:Name="PatientAgeTextBox" IsReadOnly="True" Margin="0,5,0,10"/>
+
+            <TextBlock Text="Диагноз:"/>
+            <TextBox x:Name="PatientDiagnosisTextBox" Margin="0,5,0,10"/>
+
+            <Button Content="Сохранить" HorizontalAlignment="Right" Click="SaveButton_Click" Width="100" />
+        </StackPanel>
+    </Grid>
+</Window>
