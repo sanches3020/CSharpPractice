@@ -1,0 +1,59 @@
+﻿<Window x:Class="MedicalRecordsApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:MedicalRecordsApp.ViewModels"
+        Title="Учёт медицинских записей" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen" Background="#ECEFF1">
+
+    <Window.DataContext>
+        <vm:MedicalRecordsViewModel/>
+    </Window.DataContext>
+
+    <Grid Margin="10">
+   
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Учёт медицинских записей"
+               FontSize="26" FontWeight="Bold" Foreground="#388E3C"
+               HorizontalAlignment="Center" Margin="0,10"/>
+
+        <Grid Grid.Row="1" Margin="0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0" Header="Пациенты" Margin="5">
+                <ListBox ItemsSource="{Binding Patients}" 
+                 DisplayMemberPath="FullName" Margin="5"/>
+            </GroupBox>
+
+            <GroupBox Grid.Column="1" Header="Приёмы" Margin="5">
+                <DataGrid ItemsSource="{Binding Appointments}" 
+                  AutoGenerateColumns="False" 
+                  SelectedItem="{Binding SelectedAppointment}" IsReadOnly="True" Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50"/>
+                        <DataGridTextColumn Header="Дата" 
+                                Binding="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}" Width="120"/>
+                        <DataGridTextColumn Header="Врач" Binding="{Binding DoctorName}" Width="*"/>
+                        <DataGridTextColumn Header="Пациент" Binding="{Binding PatientName}" Width="*"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Вход" Width="80" Margin="5" Click="Login_Click"/>
+            <Button Content="Чат поддержки" Width="100" Margin="5" Click="OpenChat_Click"/>
+            <Button Content="Добавить приём" Width="120" Margin="5" Command="{Binding AddAppointmentCommand}"/>
+            <Button Content="Редактировать приём" Width="140" Margin="5" Command="{Binding EditAppointmentCommand}"/>
+            <Button Content="Удалить приём" Width="120" Margin="5" Command="{Binding DeleteAppointmentCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
