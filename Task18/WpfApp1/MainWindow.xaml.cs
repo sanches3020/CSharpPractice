@@ -1,31 +1,25 @@
 ﻿using System.Windows;
-using MedicalRecordsApp.Services;
 
-namespace SQLiteExample
+namespace MedicalRecordsApp.Views
 {
     public partial class MainWindow : Window
     {
-        private readonly DatabaseManager _databaseManager;
-
         public MainWindow()
         {
+          
             InitializeComponent();
-
-            _databaseManager = new DatabaseManager("medical.db");
         }
 
-        private void CheckConnection_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
-            bool isConnected = _databaseManager.CheckConnection();
+            var loginWindow = new LoginWindow { Owner = this };
+            loginWindow.ShowDialog();
+        }
 
-            if (isConnected)
-            {
-                MessageBox.Show("Подключение успешно!", "Результат", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                MessageBox.Show("Ошибка подключения.", "Результат", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+        private void OpenChat_Click(object sender, RoutedEventArgs e)
+        {
+            var chatWindow = new ChatWindow { Owner = this };
+            chatWindow.Show();
         }
     }
 }
