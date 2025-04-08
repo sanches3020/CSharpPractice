@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MiniBlog.Models.Post>
+
+<h1>Список постов</h1>
+<a href="/Posts/Create">Создать новый пост</a>
+
+<ul>
+    @foreach (var post in Model)
+    {
+        <li>
+            <a href="/Posts/Details/@post.Id">@post.Title</a>
+            - @post.DatePosted.ToString("dd.MM.yyyy")
+        </li>
+    }
+</ul>

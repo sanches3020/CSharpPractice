@@ -1,0 +1,17 @@
+﻿@model MiniBlog.Models.Post
+
+<h1>Создать пост</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label for="Title">Заголовок:</label>
+        <input type="text" id="Title" name="Title" />
+    </div>
+    <div>
+        <label for="Content">Содержание:</label>
+        <textarea id="Content" name="Content"></textarea>
+    </div>
+    <button type="submit">Создать</button>
+</form>
+
+<a href="/Posts">Назад к списку</a>
