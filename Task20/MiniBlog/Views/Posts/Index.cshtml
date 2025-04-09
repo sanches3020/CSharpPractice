@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MiniBlog.Models.Post>
+
+<h1>Список постов</h1>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+<a href="/Posts/Create" class="btn btn-primary">Создать новый пост</a>
+
+<ul>
+    @foreach (var post in Model)
+    {
+        <li>
+            <a href="/Posts/Details/@post.Id">@post.Title</a>
+            - @post.DatePosted.ToString("dd.MM.yyyy")
+        </li>
+    }
+</ul>

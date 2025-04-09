@@ -1,0 +1,23 @@
+﻿@model MiniBlog.Models.Post
+
+<h1>Создать пост</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Title">Заголовок:</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Content">Содержание:</label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Создать</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
