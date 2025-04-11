@@ -1,0 +1,7 @@
+﻿@model MiniBlog.Models.Post
+
+<h1>@Model.Title</h1>
+<p>@Model.Content</p>
+<p><strong>Дата публикации:</strong> @Model.DatePosted.ToString("dd.MM.yyyy")</p>
+
+<a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
